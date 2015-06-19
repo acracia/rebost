@@ -36,8 +36,6 @@ INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.admindocs',
     'django.contrib.admin',
-    'django.contrib.admin',
-    'django.contrib.auth',
     'django.contrib.contenttypes',
     'crispy_forms',
     'django.contrib.messages',
@@ -99,7 +97,7 @@ TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
-USE_L10N = True
+USE_L10
 
 USE_TZ = True
 
@@ -109,4 +107,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+MEDIA_ROOT = '/media/'
 
