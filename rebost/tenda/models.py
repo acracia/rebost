@@ -17,7 +17,7 @@ class Product(models.Model):
     name = models.CharField(max_length=100, help_text=_('Name'))
     price = models.DecimalField(
         decimal_places=2,
-        max_digits=5))
+        max_digits=5)
     #available = models.BooleanField(help_text=_('Available for next rebosts'))
     created = models.DateField(auto_now_add=True)
     image = models.ImageField(upload_to='products')
