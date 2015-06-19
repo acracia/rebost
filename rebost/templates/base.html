@@ -10,8 +10,6 @@
         <title>Rebost{% if page_title %} – {{ page_title }}{% endif %}</title>
         <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}" ></link>
         <link rel="stylesheet" href="{% static "css/bootstrap-theme.min.css" %}" ></link>
-        <script src="{% static "jquery-2.1.4.min.js" %}"></script>
-        <script src="{% static "js/bootstrap.min.js" %}"></script>
     </head>
     <body>
         {% block menu %}{% endblock %}
@@ -33,13 +31,15 @@
 
         {% block body %}{% endblock %}
 
-        <div class="row">
-            <div class="col-md-12">
-                <p class="small">
+        <footer class="footer">
+            <div class="container">
+                <p class="text-muted">
                     Thanks for sharing!
                 </p>
             </div>
         </div>
-    </div>
+        <script src="{% static "jquery-2.1.4.min.js" %}"></script>
+        <script src="{% static "js/bootstrap.min.js" %}"></script>
+    </body>
 </html>
 {% endspaceless %}

@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block menu %}
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">{% if rebost.name %}{{ rebost.name }}{% else %} Welcome {% endif %}</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav nav-right">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{% if not user.is_authenticated %}Login{% else %}{{ user.name }}{% endif %}<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                {% if not user.is_authenticated %}
+                <li><a href="#">Log in</a></li>{% endif %}
+                {% if user.is_quthenticated %}
+                <li><a href="#">Log out</a></li>
+                {% endif %}
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+{% endblock %}
+{% block body %}
+    {% block content %}{% endblock %}
+{% endblock %}
