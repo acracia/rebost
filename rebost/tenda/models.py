@@ -17,7 +17,7 @@ class Rebost(models.Model):
 
 class Prosumer(models.Model):
     user = models.OneToOneField(User)
-    ces_account = models.CharField(help_text=_('User account in IntegralCES'))
+    ces_account = models.CharField(max_length=10, help_text=_('User account in IntegralCES'))
 
 
 class Product(models.Model):

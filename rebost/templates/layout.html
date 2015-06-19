@@ -10,15 +10,15 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">{% if rebost.name %}{{ rebost.name }}{% else %} Welcome {% endif %}</a>
+          <a class="navbar-brand" href="#">{% if rebost.name %}{{ rebost.name }} - Dashboard{% else %} Welcome {% endif %}</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav nav-right">
+          <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{% if not user.is_authenticated %}Login{% else %}{{ user.name }}{% endif %}<span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{% if not user.is_authenticated %}Menu{% else %}{{ user.name }}{% endif %}<span class="caret"></span></a>
               <ul class="dropdown-menu">
                 {% if not user.is_authenticated %}
-                <li><a href="#">Log in</a></li>{% endif %}
+                <li><a href="{% url 'index:login' %}">Log in</a></li>{% endif %}
                 {% if user.is_quthenticated %}
                 <li><a href="#">Log out</a></li>
                 {% endif %}
