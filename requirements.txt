@@ -10,3 +10,4 @@ pyuca==1.1
 reportlab==3.2.0
 six==1.9.0
 wheel==0.24.0
+ipython==3.1.0
