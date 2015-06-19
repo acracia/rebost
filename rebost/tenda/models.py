@@ -1,8 +1,8 @@
 from django.db import models
 from django.conf import settings
 from django.utils.translation import ugettext as _
+from django.contrib.auth.models import User
 
-# Create your models here.
 
 class Ecoxarxa(models.Model):
     name = models.CharField(max_length=100, help_text=_('Name'))
@@ -12,7 +12,12 @@ class Ecoxarxa(models.Model):
 class Rebost(models.Model):
     name = models.CharField(max_length=100, help_text=_('Name'))
     ecoxarxa = models.ForeignKey(Ecoxarxa, related_name="rebosts")
-    group = models.OneToOneField(settings.AUTH_GROUP_MODEL, unique=True)
+    # group = models.OneToOneField(settings.AUTH_GROUP_MODEL, unique=True)
+
+
+class Prosumer(models.Model):
+    user = models.OneToOneField(User)
+    ces_account = models.CharField(help_text=_('User account in IntegralCES'))
 
 
 class Product(models.Model):
@@ -20,20 +25,15 @@ class Product(models.Model):
     price = models.DecimalField(
         decimal_places=2,
         max_digits=5)
-    #available = models.BooleanField(help_text=_('Available for next rebosts'))
+    # available = models.BooleanField(help_text=_('Available for next rebosts'))
     created = models.DateField(auto_now_add=True)
     image = models.ImageField(upload_to='products')
     producer = models.ForeignKey(Prosumer, related_name="products",
                                  related_query_name="products")
     stock = models.IntegerField()
 
-    def available():
-            return (self.stock >=1 )
-
-
-class Prosumer(models.Model):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL)
-    ces_account = models.Charfield(help_text=_('User account in IntegralCES'))
+    def available(self):
+            return (self.stock >= 1)
 
 
 class ExchangeDay(models.Model):
@@ -46,6 +46,7 @@ class ExchangeDay(models.Model):
         help_text=_('How many days in aadvance the comanda closes'))
 
 
+
 class Comanda(models.Model):
     '''
     A list of products to be delivered to the user on an ExchangeDay
@@ -54,6 +55,7 @@ class Comanda(models.Model):
     products = models.ManyToManyField(Product, related_name="comandas")
     exchange = models.ForeignKey(Exchange, related_name="comandas")
     #    status = TODO. must be something like 'pending, delivered, charged...'
+
 
 class Payment(models.Model):
     '''
