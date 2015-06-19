@@ -25,7 +25,7 @@ class Product(models.Model):
                                  related_query_name="products")
     stock = models.IntegerField()
     def available():
-            return ( self.stock <=1 )
+            return ( self.stock >=1 )
 class Prosumer(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL)
     ces_account = models.Charfield(help_text=_('User account in IntegralCES'))
@@ -39,6 +39,5 @@ class Comanda(models.Model):
     products = models.ManyToManyField(Product, related_name="comandas")
     exchange = models.ForeignKey(Exchange, related_name="comandas")
     #    status = TODO. must be something like 'pending, delivered, charged...'
-
 
 
