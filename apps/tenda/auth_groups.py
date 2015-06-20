@@ -10,4 +10,4 @@ XARXA_ADMIN = "Ecoxarxa Admin"
 # This group will have CRUD privileges around eco-networks
 SUPER_ADMIN = "Super Admin"
 
-# The remaining users are obviuosly prosumers
+# The remaining users are obviuosly(?) prosumers

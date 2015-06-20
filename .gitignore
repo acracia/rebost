@@ -1,4 +1,4 @@
 db.sqlite3
 *.pyc
 rebost/settings.py
-rebost/tenda/migrations/*
+apps/tenda/migrations/*
