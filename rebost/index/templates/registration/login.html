@@ -1,5 +1,10 @@
 {% extends "blank.html" %}
+{% load rebost_tags %}
+{% load staticfiles %}
 
+{% block custom_styles %}
+    <link rel="stylesheet" href="{% static "css/signin.css" %}"></link>
+{% endblock %}
 {% block content %}
     <div class="row">
         <div class="container">
@@ -7,11 +12,10 @@
           <form class="form-signin" method="post">
             {% csrf_token %}
             <h2 class="form-signin-heading">Please sign in</h2>
-            <label for="inputNickname" class="sr-only">username</label>
-            <input id="inputNickname" class="form-control" placeholder="User name" required="" autofocus=""     type="text">
-            <label for="inputPassword" class="sr-only">password</label>
-            <input id="inputPassword" class="form-control" placeholder="Password" required="" type="password">
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+            {% non_field_errors form %}
+            {% login_form_field form.username %}
+            {% login_form_field form.password %}
+            <button class="btn btn-lg btn-secondary btn-block" type="submit">Sign in</button>
           </form>
         </div>
     </div>

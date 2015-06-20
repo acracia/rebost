@@ -19,8 +19,8 @@
               <ul class="dropdown-menu">
                 {% if not user.is_authenticated %}
                 <li><a href="{% url 'index:login' %}">Log in</a></li>{% endif %}
-                {% if user.is_quthenticated %}
-                <li><a href="#">Log out</a></li>
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'index:logout' %}">Log out</a></li>
                 {% endif %}
               </ul>
             </li>
