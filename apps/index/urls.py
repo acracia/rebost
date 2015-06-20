@@ -2,7 +2,7 @@ from django.conf.urls import patterns, url
 from django.contrib.auth import views as auth_views
 
 urlpatterns = patterns(
-    'rebost.index.views',
+    'apps.index.views',
 
     url(r'^/?$', 'index', name='index'),
     url(r'^accounts/login/$', auth_views.login, name='login'),

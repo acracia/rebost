@@ -1,5 +1,5 @@
 from django.contrib import admin
-from rebost.tenda.models import Product
+from .models import Product
 
 
 class ProductAdmin(admin.ModelAdmin):
