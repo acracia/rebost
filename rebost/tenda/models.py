@@ -25,14 +25,13 @@ class Product(models.Model):
     price = models.DecimalField(
         decimal_places=2,
         max_digits=5)
-    # available = models.BooleanField(help_text=_('Available for next rebosts'))
     created = models.DateField(auto_now_add=True)
     image = models.ImageField(upload_to='products')
     producer = models.ForeignKey(Prosumer, related_name="products",
                                  related_query_name="products")
     stock = models.IntegerField()
 
-    def available(self):
+    def is_available(self):
             return (self.stock >= 1)
 
 
@@ -46,14 +45,13 @@ class ExchangeDay(models.Model):
         help_text=_('How many days in aadvance the comanda closes'))
 
 
-
 class Comanda(models.Model):
     '''
     A list of products to be delivered to the user on an ExchangeDay
     '''
     user = models.ForeignKey(Prosumer, related_name="comandes")
     products = models.ManyToManyField(Product, related_name="comandas")
-    exchange = models.ForeignKey(Exchange, related_name="comandas")
+    exchange_day = models.ForeignKey(ExchangeDay, related_name="comandas")
     #    status = TODO. must be something like 'pending, delivered, charged...'
 
 
