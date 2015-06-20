@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load rebost_tags %}
 {% load staticfiles %}
 {% block custom_styles %}
     <link rel="stylesheet" href="{% static "css/dashboard.css" %}"></link>
@@ -39,25 +40,33 @@
           <div class="col-sm-3 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
               <li class="active"><a href="{% url 'index:index' %}">Overview <span class="sr-only">(current)</span></a></li>
-              {# TODO: limit to super admins #}
               <li><a href="#">Ecoxarxes</a></li>
-              {# TODO: limit to only ecoxarxes admins #}
               <li><a href="#">Rebosts</a></li>
-              {# TODO: limit to rebosts admins #}
               <li><a href="#">Prosumers</a></li>
             </ul>
+            {% if user|is_super_admin %}
+            {% if user|is_ecoxarxa_admin %}
+            {% if user|is_rebost_admin %}
             <ul class="nav nav-sidebar">
-              <li><a href="">Testing sizes</a></li>
+              <li><a href="#">Prosumers</a></li>
               <li><a href="">Nav item again</a></li>
               <li><a href="">One more nav</a></li>
               <li><a href="">Another nav item</a></li>
               <li><a href="">More navigation</a></li>
             </ul>
+            {% endif %}
             <ul class="nav nav-sidebar">
-              <li><a href="">Nav item again</a></li>
+              <li><a href="">Rebosts</a></li>
               <li><a href="">One more nav</a></li>
               <li><a href="">Another nav item</a></li>
             </ul>
+            {% endif %}
+            <ul class="nav nav-sidebar">
+              <li><a href="">Rebosts</a></li>
+              <li><a href="">One more nav</a></li>
+              <li><a href="">Another nav item</a></li>
+            </ul>
+            {% endif %}
           </div>
           <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             {% block content %}{% endblock %}
